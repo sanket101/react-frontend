@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 const router = (
     <Router>
         <div>
-            <Route path="/sendmail" component={Header}/>
+            <Route path="/confirmuser/:uid" component={Header}/>
             <Route path="/confirmmail/:uid" component={ConfirmMail}/>
         </div>
     </Router>

@@ -18,8 +18,15 @@ export default class Header extends React.Component {
         //alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
         //Fetch email from uid
-        axios.get('http://localhost:8765/api/v1/sendmail/'+ this.state.value)
-        .then(res => {console.log(res);this.temp = res;this.setState({res : this.temp.data});});
+        axios.get('http://localhost:8881/api/v1/sendmail/'+ this.props.match.params.uid)
+        .then(res => {console.log(res);this.temp = res;this.setState({res : this.temp.data.response});});
+
+        /*
+         <label>
+                    UId:
+                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                    </label>
+        */
     }
 
     render(){
@@ -27,10 +34,6 @@ export default class Header extends React.Component {
         return  (
             <div >
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                    UId:
-                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                    </label>
                     <input type="submit" value="Submit" />
                 </form>
                 <div>
