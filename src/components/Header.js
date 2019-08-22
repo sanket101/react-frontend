@@ -28,7 +28,7 @@ export default class Header extends React.Component {
         this.setState({flag:true})
         //this.props.match.params.uid
         var uid = this.props.match.params.uid;
-        axios.post('http://localhost:8881/api/v1/sendmail/',{emailID:"aditisjoshi14@gmail.com"})
+        axios.post('http://localhost:8001/api/v1/sendmail/',{emailID:"aditisjoshi14@gmail.com"})
             .then(res => { console.log(res); this.temp = res; 
                 if(this.temp.data.response === 'Congrats! Your account has been successfully activated...' ||
                 this.temp.data.response === 'User already verified'){
