@@ -73,7 +73,7 @@ export default class Header extends React.Component {
                         <div className="activatebtn">
                         { this.state.submitbtn ?
                         <form onSubmit={this.handleSubmit}>
-                            <input className="btn btn-primary" type="submit" value="Activate" />
+                            <input className="btn btn-primary" id="submit" type="submit" value="Activate" />
                         </form>
                         :
                         <div></div>
