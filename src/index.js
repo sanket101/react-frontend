@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Header from './components/Header';
-import ConfirmMail from './components/ConfirmMail';
-import {BrowserRouter as Router, Route, Link } from "react-router-dom";
+//import ConfirmMail from './components/ConfirmMail';
+import {BrowserRouter as Router, Route } from "react-router-dom";
 import history from './history.js';
 
 const router = (
     <Router history={history}>
         <div>
-            <Route exact path="/" component={Header}/>
+            <Route exact path="/" component={App}/>
             <Route path="/confirmmail/:uid" component={Header}/>
         </div>
     </Router>

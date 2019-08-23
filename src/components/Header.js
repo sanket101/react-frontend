@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Loader from 'react-loader';
 export default class Header extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: '', res: '', flag: false , btnflag : false , submitbtn : true };
+        this.state = { value: '', res: '', email:'',flag: false , btnflag : false , submitbtn : true };
 
         /*setTimeout(function () {
             this.setState({
@@ -14,6 +14,7 @@ export default class Header extends React.Component {
         }.bind(this), 5000);
 */
         this.handleChange = this.handleChange.bind(this);
+        this.handleEmail= this.handleEmail.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,14 +22,19 @@ export default class Header extends React.Component {
         this.setState({ value: event.target.value });
     }
 
+    handleEmail(event) {
+        this.setState({ email: event.target.value });
+    }
+
+
     handleSubmit(event) {
         //alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
         //Fetch email from uid
         this.setState({flag:true})
         //this.props.match.params.uid
-        var uid = this.props.match.params.uid;
-        axios.post('http://localhost:8001/api/v1/sendmail/',{emailID:"aditisjoshi14@gmail.com"})
+        //var uid = this.props.match.params.uid;
+        axios.post('http://localhost:8001/api/v1/sendmail/',{emailID:this.state.email})
             .then(res => { console.log(res); this.temp = res; 
                 if(this.temp.data.response === 'Congrats! Your account has been successfully activated...' ||
                 this.temp.data.response === 'User already verified'){
@@ -76,6 +82,9 @@ export default class Header extends React.Component {
                         <div className="activatebtn">
                         { this.state.submitbtn ?
                         <form onSubmit={this.handleSubmit}>
+                            Email id : <input type="text" id="emailid" name="email" onChange={this.handleEmail}></input>
+                            <br></br>
+                            <br></br>
                             <input className="btn btn-primary" id="submit" type="submit" value="Activate" />
                         </form>
                         :
